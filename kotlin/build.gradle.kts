@@ -23,6 +23,9 @@ dependencies {
     implementation("com.squareup.moshi:moshi-kotlin:1.15.1")
 }
 
-tasks.test {
-    useJUnitPlatform()
+tasks.processResources {
+    from("../go/dist") {
+        include("*.dll", "*.so", "*.dylib")
+        into("com/github/bogdanfinn/tlsclient/resources")
+    }
 }
