@@ -2,7 +2,6 @@ package com.github.bogdanfinn.tlsclient
 
 import com.squareup.moshi.JsonClass
 import com.squareup.moshi.JsonReader
-import java.awt.SystemColor.text
 import java.io.Closeable
 
 
