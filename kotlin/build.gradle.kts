@@ -3,8 +3,8 @@ plugins {
     kotlin("jvm") version "2.0.20"
 }
 
-group = "codes.som"
-version = "1.0-SNAPSHOT"
+group = "com.github.bogdanfinn"
+version = "1.0.1-SNAPSHOT"
 
 repositories {
     mavenCentral()
