@@ -17,7 +17,7 @@ public class TLSClientInit {
         } else if (osName.contains("Linux")) {
             libName = "tls-client-linux-" + osArch + ".so";
         } else if (osName.contains("Mac")) {
-            libName = "tls-client-darwin" + osArch + ".dylib";
+            libName = "tls-client-darwin-" + osArch + ".dylib";
         }
 
         if (libName == null) throw new IOException("Unsupported platform.");
