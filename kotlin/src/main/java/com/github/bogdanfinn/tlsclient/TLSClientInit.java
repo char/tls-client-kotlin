@@ -15,14 +15,15 @@ public class TLSClientInit {
         if (osName.contains("Windows")) {
             libName = "tls-client-windows-" + osArch + ".dll";
         } else if (osName.contains("Linux")) {
-            libName = "tls-client-linux-" + osArch + ".dll";
+            libName = "tls-client-linux-" + osArch + ".so";
         } else if (osName.contains("Mac")) {
-            libName = "tls-client-darwin" + osArch + ".dll";
+            libName = "tls-client-darwin" + osArch + ".dylib";
         }
 
         if (libName == null) throw new IOException("Unsupported platform.");
 
-        if (System.getProperty("TLS_CLIENT_DEV").equals("1")) {
+        String tlsClientDev = System.getProperty("com.github.bogdanfinn.tlsclient.dev");
+        if (tlsClientDev != null && tlsClientDev.equals("1")) {
             System.load(new File("../go/dist/" + libName).getAbsolutePath());
             return;
         }
