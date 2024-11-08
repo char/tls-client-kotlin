@@ -53,7 +53,8 @@ data class TLSClientResponse(
             }
             reader.endObject()
             val response =  TLSClientResponse(id, body, status, cookies, headers, sessionId, target, usedProtocol)
-            TLSClientJNI.freeMemory(this.id)
+            TLSClientJNI.freeMemory(id)
+            return response;
         }
     }
 }
