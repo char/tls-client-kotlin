@@ -29,6 +29,7 @@ class TLSClientRequest(var method: String, var url: String) {
         writer.endObject()
 
         val requestJson = buffer.readByteArray()
+        buffer.close();
         val responseJsonString = TLSClientJNI.request(requestJson)
         val reader = JsonReader.of(Buffer().writeUtf8(responseJsonString))
         val response = TLSClientResponse.fromJSON(reader)
