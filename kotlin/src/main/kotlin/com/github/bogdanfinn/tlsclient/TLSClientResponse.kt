@@ -15,11 +15,7 @@ data class TLSClientResponse(
     val sessionId: String?,
     val target: String?,
     val usedProtocol: String?,
-) : Closeable {
-    override fun close() {
-        TLSClientJNI.freeMemory(this.id)
-    }
-
+) {
     companion object {
         fun fromJSON(reader: JsonReader): TLSClientResponse {
             var id = ""
@@ -56,8 +52,8 @@ data class TLSClientResponse(
                 }
             }
             reader.endObject()
-
-            return TLSClientResponse(id, body, status, cookies, headers, sessionId, target, usedProtocol)
+            val response =  TLSClientResponse(id, body, status, cookies, headers, sessionId, target, usedProtocol)
+            TLSClientJNI.freeMemory(this.id)
         }
     }
 }
